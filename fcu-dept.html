@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>fcu-dept</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <p style="font-size:16px">Choose a college</p>
+    <select id="collage_test"></select>
+    <p style="font-size:16px">Choose a department</p>
+    <select id="department_test"></select>
+    <script>
+        var collages = {
+            "College of Business": [
+                "Department of Accounting",
+                "Department of International Bussiness",
+                "Bacherlor's Degree in International Business Administration in English, Department of International Business",
+                "Department of Public Finance",
+                "Department of Cooperative Economics and Social Entrepreneurship",
+                "Department of Statistics",
+                "Department of Economics",
+                "Department of Business Administration",
+                "Department of Marketing"
+            ],
+            "College of Engineering": [
+                "Department of Fiber and Composite Materials",
+                "Department of Industrial Engineering and System Management",
+                "Department of Chemical Engineering",
+                "Department of Aerospace and Syatems Engineering",
+                "Bachelor's Porgram in Precision System Design",
+            ],
+            "College of Information and Electrical Engineering": [
+                "Department of Information Engineering and Computer Science",
+                "Department of Electrical Engineering",
+                "Department of Electronic Engineering",
+                "Department of Automatic Control Engineering",
+                "Department of Communications Engineering",
+                "Honor Program of Information and Electrical Engineering",
+            ],
+            "College of Humanities and Social Sciences": [
+                "Department of Chinese Literature",
+                "Department of Foreign Language and Literature, The Master Program in English Studies",
+                "Master's Program, Graduate Institute of History and Artefacts"
+            ],
+            "College of Construstion and Development": [
+                "Department of Civil Engineering",
+                "Department of Water Resources Enineering and Conservation",
+                "Department of Urban Planning and Spatial Information"
+            ],
+            "College of Sciences": [
+                "Department of Environmental Engineering and Science",
+                "Department of Materials Science and Engineering",
+            ],
+            "College of Finance": [
+                "Department of Risk Management and Insurance",
+                "Department of Finance",
+                "Bachelor's Pogram of Financial Engineering and Acturial Science"
+            ],
+        }
+        var collages_list = Object.keys(collages)
+        $('#collage_test').ready(() => {
+            $.each(collages_list, (index, value) => {
+                $('#collage_test').append(new Option(value))
+            })
+            $.each(collages[$('#collage_test').val()], (index, value) => {
+                $('#department_test').append(new Option(value))
+            })
+        })
+        $("#collage_test").change(() => {
+            $("#department_test").empty()
+            $.each(collages[$('#collage_test').val()], (index, value) => {
+                $('#department_test').append(new Option(value))
+            })
+        })
+    </script>
+</body>
+
+</html>
